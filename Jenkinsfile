@@ -9,7 +9,10 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'npm install'
+          withEnv(['npm_config_cache=npm-cache']) {
+            sh 'npm install'
+          }
+        
       }
     }
     stage('Test') {
